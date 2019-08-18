@@ -1,51 +1,48 @@
-import { Icon } from 'native-base';
+import { Icon, Text, View } from 'native-base';
 import React from 'react';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import {
   createAppContainer,
   createBottomTabNavigator,
   createDrawerNavigator,
 } from 'react-navigation';
-import Group from './Group';
-import Scoreboard from './Scoreboard';
-import Timer from './Timer';
+import GroupPage from './group';
+import ScoreboardPage from './scoreboard';
+import TimerPage from './timer';
 
 const FocusTabs = createBottomTabNavigator(
   {
     Group: {
-      screen: Group,
+      screen: GroupPage,
       navigationOptions: {
         title: 'Screen 3',
         tabBarLabel: 'Group',
-        tabBarIcon: (props: { tintColor: string | null }) => (
-          <Icon
-            type="MaterialIcons"
-            name="group"
-            style={{ fontSize: 25, color: props.tintColor }}
-          />
+        tabBarIcon: ({ tintColor }) => (
+          <Icon type="MaterialIcons" name="group" style={{ fontSize: 25, color: tintColor }} />
         ),
       },
     },
     Timer: {
-      screen: Timer,
+      screen: TimerPage,
       navigationOptions: {
         title: 'Screen 3',
         tabBarLabel: 'Home',
-        tabBarIcon: (props: { tintColor: string | null }) => (
+        tabBarIcon: ({ tintColor }) => (
           <Icon
             type="MaterialIcons"
             name="pause-circle-outline"
-            style={{ fontSize: 35, color: props.tintColor }}
+            style={{ fontSize: 35, color: tintColor }}
           />
         ),
       },
     },
     Rewards: {
-      screen: Scoreboard,
+      screen: ScoreboardPage,
       navigationOptions: {
         tabBarLabel: 'Home',
-        tabBarIcon: (props: { tintColor: string | null }) => (
-          <Icon type="Ionicons" name="ios-stats" style={{ fontSize: 25, color: props.tintColor }} />
+        tabBarIcon: ({ tintColor }) => (
+          <Icon type="Ionicons" name="ios-stats" style={{ fontSize: 25, color: tintColor }} />
         ),
       },
     },

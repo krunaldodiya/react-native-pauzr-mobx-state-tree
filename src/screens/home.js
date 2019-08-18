@@ -1,10 +1,10 @@
-import React, { PureComponent, ReactFragment } from 'react';
+import React, { PureComponent } from 'react';
 import Swiper from 'react-native-swiper';
-import Focus from './Focus';
-import Fun from './Fun';
+import FocusTabs from './Tabs/Focus';
+import FunTabs from './Tabs/Fun';
 
 class Home extends PureComponent {
-  render(): ReactFragment {
+  render() {
     return (
       <Swiper
         showsHorizontalScrollIndicator={false}
@@ -13,8 +13,8 @@ class Home extends PureComponent {
         showsPagination={false}
         loop={false}
       >
-        <Focus />
-        <Fun />
+        <FocusTabs />
+        <FunTabs />
       </Swiper>
     );
   }
