@@ -1,6 +1,6 @@
-import {Icon} from 'native-base';
+import { Icon } from 'native-base';
 import React from 'react';
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import { SafeAreaView, ScrollView, Text, View } from 'react-native';
 import {
   createAppContainer,
   createBottomTabNavigator,
@@ -17,11 +17,11 @@ const FocusTabs = createBottomTabNavigator(
       navigationOptions: {
         title: 'Screen 3',
         tabBarLabel: 'Group',
-        tabBarIcon: (props: {tintColor: string | null}) => (
+        tabBarIcon: (props: { tintColor: string | null }) => (
           <Icon
             type="MaterialIcons"
             name="group"
-            style={{fontSize: 25, color: props.tintColor}}
+            style={{ fontSize: 25, color: props.tintColor }}
           />
         ),
       },
@@ -31,11 +31,11 @@ const FocusTabs = createBottomTabNavigator(
       navigationOptions: {
         title: 'Screen 3',
         tabBarLabel: 'Home',
-        tabBarIcon: (props: {tintColor: string | null}) => (
+        tabBarIcon: (props: { tintColor: string | null }) => (
           <Icon
             type="MaterialIcons"
             name="pause-circle-outline"
-            style={{fontSize: 35, color: props.tintColor}}
+            style={{ fontSize: 35, color: props.tintColor }}
           />
         ),
       },
@@ -44,12 +44,8 @@ const FocusTabs = createBottomTabNavigator(
       screen: Scoreboard,
       navigationOptions: {
         tabBarLabel: 'Home',
-        tabBarIcon: (props: {tintColor: string | null}) => (
-          <Icon
-            type="Ionicons"
-            name="ios-stats"
-            style={{fontSize: 25, color: props.tintColor}}
-          />
+        tabBarIcon: (props: { tintColor: string | null }) => (
+          <Icon type="Ionicons" name="ios-stats" style={{ fontSize: 25, color: props.tintColor }} />
         ),
       },
     },
@@ -65,13 +61,13 @@ const FocusTabs = createBottomTabNavigator(
         height: 50,
       },
     },
-  },
+  }
 );
 
 const CustomDrawerContentComponent = () => (
   <ScrollView>
-    <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <Text>hello</Text>
       </View>
     </SafeAreaView>
@@ -92,7 +88,7 @@ const DrawerNavigator = createDrawerNavigator(
       activeTintColor: '#fff',
       activeBackgroundColor: '#6b52ae',
     },
-  },
+  }
 );
 
 export default createAppContainer(DrawerNavigator);

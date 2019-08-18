@@ -1,4 +1,4 @@
-package com.firebase;
+package com.pauzr.org;
 
 import android.app.Application;
 import android.util.Log;
@@ -13,7 +13,6 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.List;
 
-import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 

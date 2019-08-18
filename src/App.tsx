@@ -1,11 +1,11 @@
-import React, {PureComponent, ReactFragment} from 'react';
-import {createAppContainer, createStackNavigator} from 'react-navigation';
+import React, { PureComponent, ReactFragment } from 'react';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import Home from './Home';
 
 const getAppNavigator = (initialRouteName: string) => {
   return createStackNavigator(
     {
-      Home: {screen: Home},
+      Home: { screen: Home },
     },
     {
       initialRouteName,
@@ -14,7 +14,7 @@ const getAppNavigator = (initialRouteName: string) => {
           header: null,
         };
       },
-    },
+    }
   );
 };
 
