@@ -1,8 +1,9 @@
-import {observer} from 'mobx-react';
-import {Text, View} from 'native-base';
-import React, {PureComponent, ReactFragment} from 'react';
+import { observer } from 'mobx-react';
+import React, { PureComponent, ReactFragment } from 'react';
 import firebase from 'react-native-firebase';
-import {createStackNavigator} from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+import SplashScreen from './components/Splash';
+import getInitialScreen from './libs/initial_screen';
 import Home from './screens/home';
 import Intro from './screens/Intro';
 import SelectCountry from './screens/Location/SelectCountry';
@@ -14,11 +15,11 @@ import ThemeStore from './stores/theme';
 const getAppNavigator = (initialRouteName: string) => {
   return createStackNavigator(
     {
-      Home: {screen: Home},
-      Intro: {screen: Intro},
-      RequestOtp: {screen: RequestOtp},
-      VerifyOtp: {screen: VerifyOtp},
-      SelectCountry: {screen: SelectCountry},
+      Home: { screen: Home },
+      Intro: { screen: Intro },
+      RequestOtp: { screen: RequestOtp },
+      VerifyOtp: { screen: VerifyOtp },
+      SelectCountry: { screen: SelectCountry },
     },
     {
       initialRouteName,
@@ -41,11 +42,17 @@ class App extends PureComponent {
   }
 
   render(): ReactFragment {
-    return (
-      <View>
-        <Text>helloh</Text>
-      </View>
-    );
+    if (AuthStore.loading || ThemeStore.loading || ThemeStore.getScreen == null) {
+      return <SplashScreen />;
+    }
+
+    const initialScreen = getInitialScreen(AuthStore.authUser);
+
+    const AppNavigator = getAppNavigator(initialScreen);
+
+    const AppContainer = createAppContainer(AppNavigator);
+
+    return <AppContainer />;
   }
 }
 
