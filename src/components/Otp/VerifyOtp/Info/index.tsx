@@ -1,8 +1,10 @@
+import { observer } from 'mobx-react';
 import { Text, View } from 'native-base';
 import React, { PureComponent } from 'react';
 import OtpStore from '../../../../stores/otp';
 import styles from './styles';
 
+@observer
 class Info extends PureComponent {
   render() {
     const { mobile } = OtpStore;

@@ -74,7 +74,7 @@ class Intro extends PureComponent<IntroProps> {
         showDoneButton
         showNextButton
         showPrevButton
-        activeDotStyle={{ backgroundColor: 'skyblue' }}
+        activeDotStyle={{ backgroundColor: 'red' }}
         dotStyle={{ backgroundColor: 'white' }}
       />
     );
