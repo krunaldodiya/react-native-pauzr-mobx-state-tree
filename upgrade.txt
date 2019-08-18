@@ -1,0 +1,52 @@
+.eslintrc.json
+.prettierrc
+babel.config.js
+package.json
+tsconfig.json
+app.json
+jest.config
+metro.config
+
+rm -rf /usr/local/var/run/watchman && brew uninstall watchman && brew install watchman
+watchman watch-del-all
+rm -rf $TMPDIR/react-*
+rm -rf $TMPDIR/metro-*
+rm -rf $TMPDIR/haste-*
+rm -rf node_modules
+npm cache clean --force
+npm install
+react-native run-android
+npm start --reset-cache
+
+
+32b32d5885b089675ffb8e144a1172d16edfb807
+Author: Krunal Dodiya <kunal.dodiya1@gmail.com>
+Date:   Sun Aug 18 18:17:19 2019 +0530
+
+    typescript added
+
+commit 803d5aaa924bf1945571bb298d7ffa95c57499e9
+Author: Krunal Dodiya <kunal.dodiya1@gmail.com>
+Date:   Sun Aug 18 18:05:46 2019 +0530
+
+    typescript added
+
+commit 386d7a5727cfcd6de0d3d3616e988bcfbff3919e
+Author: Krunal Dodiya <kunal.dodiya1@gmail.com>
+Date:   Sun Aug 18 17:58:36 2019 +0530
+
+    typescript added
+
+commit ea98696d62b02ab1d813357167dee36afdc674c9
+Author: Krunal Dodiya <kunal.dodiya1@gmail.com>
+Date:   Sun Aug 18 17:41:22 2019 +0530
+
+    typescript added
+
+commit 207ea7df47ad69097d93bdd3b01ac5e4d42928ab
+Author: Krunal Dodiya <krunaldodiya@Krunals-iMac.local>
+Date:   Sun Aug 18 15:52:22 2019 +0530
+
+    typescript added
+
+commit 0ed791d9675dee33876928dff31b5c402a118ce3

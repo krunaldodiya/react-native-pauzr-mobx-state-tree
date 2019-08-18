@@ -1,8 +1,8 @@
-import { Header } from 'native-base';
-import React, { PureComponent, ReactFragment } from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import {Header} from 'native-base';
+import React, {PureComponent, ReactFragment} from 'react';
+import {Image, SafeAreaView, Text, View} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { NavigationScreenProp } from 'react-navigation';
+import {NavigationScreenProp} from 'react-navigation';
 import getAssets from '../../libs/image';
 import screens from '../../libs/screens';
 import ThemeStore from '../../stores/theme';
@@ -14,28 +14,28 @@ export interface IntroProps {
 
 class Intro extends PureComponent<IntroProps, object, any> {
   onDone() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
   }
 
   onSkip() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
   }
 
   renderItem = (data: any) => {
-    const { item } = data;
+    const {item} = data;
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{flex: 1}}>
         <Header
           androidStatusBarColor={item.backgroundColor}
           iosBarStyle="light-content"
-          style={{ backgroundColor: item.backgroundColor }}
+          style={{backgroundColor: item.backgroundColor}}
         />
         <View style={styles.mainContent(item.backgroundColor)}>
           <Text style={styles.title}>{item.title}</Text>
-          <Image style={styles.image} source={{ uri: getAssets(item.image) }} />
+          <Image style={styles.image} source={{uri: getAssets(item.image)}} />
           <Text style={styles.text}>{item.text}</Text>
         </View>
       </SafeAreaView>
@@ -72,8 +72,8 @@ class Intro extends PureComponent<IntroProps, object, any> {
         showDoneButton
         showNextButton
         showPrevButton
-        activeDotStyle={{ backgroundColor: 'skyblue' }}
-        dotStyle={{ backgroundColor: 'white' }}
+        activeDotStyle={{backgroundColor: 'skyblue'}}
+        dotStyle={{backgroundColor: 'white'}}
       />
     );
   }
