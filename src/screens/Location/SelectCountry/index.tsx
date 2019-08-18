@@ -2,11 +2,16 @@ import { observer } from 'mobx-react';
 import { Body, Button, Header, Icon, Left, Text, Title, View } from 'native-base';
 import React, { PureComponent } from 'react';
 import { FlatList, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 import LocationStore from '../../../stores/location';
 import OtpStore from '../../../stores/otp';
 
+interface SelectCountryProps {
+  navigation: NavigationScreenProp<any, any>;
+}
+
 @observer
-class SelectCountry extends PureComponent {
+class SelectCountry extends PureComponent<SelectCountryProps> {
   state = {
     keywords: '',
   };
@@ -91,7 +96,7 @@ class SelectCountry extends PureComponent {
     );
   };
 
-  setSelectedCountry = country => {
+  setSelectedCountry = (country: object) => {
     const { navigation } = this.props;
     const { setSelectedCountry } = OtpStore;
 

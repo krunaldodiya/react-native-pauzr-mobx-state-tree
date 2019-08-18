@@ -1,6 +1,8 @@
+import { observer } from 'mobx-react';
 import React, { PureComponent } from 'react';
 import { ActivityIndicator, SafeAreaView } from 'react-native';
 
+@observer
 class SplashScreen extends PureComponent {
   render() {
     return (

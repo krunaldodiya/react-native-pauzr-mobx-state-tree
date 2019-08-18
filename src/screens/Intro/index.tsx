@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react';
 import { Header } from 'native-base';
 import React, { PureComponent, ReactFragment } from 'react';
 import { Image, SafeAreaView, Text, View } from 'react-native';
@@ -8,11 +9,12 @@ import screens from '../../libs/screens';
 import ThemeStore from '../../stores/theme';
 import styles from './styles';
 
-export interface IntroProps {
+interface IntroProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-class Intro extends PureComponent<IntroProps, object, any> {
+@observer
+class Intro extends PureComponent<IntroProps> {
   onDone() {
     const { navigation } = this.props;
     navigation.replace(screens.RequestOtp);

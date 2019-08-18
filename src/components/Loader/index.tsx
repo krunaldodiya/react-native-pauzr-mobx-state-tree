@@ -1,8 +1,14 @@
+import { observer } from 'mobx-react';
 import React, { PureComponent } from 'react';
 import Spinner from 'react-native-loading-spinner-overlay';
 import styles from './styles';
 
-class Loader extends PureComponent {
+interface LoaderProps {
+  loading: boolean;
+}
+
+@observer
+class Loader extends PureComponent<LoaderProps> {
   render() {
     const { loading } = this.props;
 

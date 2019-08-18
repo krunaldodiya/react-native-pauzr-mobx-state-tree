@@ -1,7 +1,9 @@
 import { Text, View } from 'native-base';
 import React, { PureComponent } from 'react';
 import styles from './styles';
+import { observer } from 'mobx-react';
 
+@observer
 class Info extends PureComponent {
   render() {
     return (

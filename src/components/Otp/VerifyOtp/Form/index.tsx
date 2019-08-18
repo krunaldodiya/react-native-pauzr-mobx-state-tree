@@ -2,44 +2,47 @@ import { observer } from 'mobx-react';
 import { Button, Form, Input, Item, Text } from 'native-base';
 import React, { PureComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
-import screens from '../../../../libs/screens';
+import { NavigationScreenProp } from 'react-navigation';
 import OtpStore from '../../../../stores/otp';
 import styles from './styles';
 
+interface VerifyOtpFormProps {
+  navigation: NavigationScreenProp<any, any>;
+}
+
 @observer
-class RequestOtpForm extends PureComponent {
-  isDisable = mobile => {
-    if (mobile === null) {
+class VerifyOtpForm extends PureComponent<VerifyOtpFormProps> {
+  isDisable = (clientOtp: number) => {
+    if (clientOtp === null) {
       return true;
     }
 
-    return mobile.length <= 5;
+    return clientOtp.toString().length !== 4;
   };
 
   render() {
     const { navigation } = this.props;
-    const { mobile, country, changeMobile, requestOtp } = OtpStore;
+    const { clientOtp, changeOtp, requestOtp, verifyOtp } = OtpStore;
 
     return (
       <Form style={styles.formWrapper}>
         <TouchableOpacity
-          style={styles.country}
-          onPress={() => navigation.push(screens.SelectCountry)}
+          style={{ marginBottom: 30 }}
+          onPress={() => requestOtp(navigation, 'resend')}
         >
-          <Text style={{ fontSize: 12, color: '#ccc', paddingLeft: 10 }}>
-            {country ? country.name : 'Country'}
-          </Text>
+          <Text style={{ fontSize: 14, color: '#e74c3c', paddingLeft: 10 }}>RESEND OTP</Text>
         </TouchableOpacity>
 
         <Item style={styles.inputWrapper}>
           <Input
-            placeholder="Mobile Number (Without Country Code)"
+            placeholder="OTP"
             placeholderTextColor="#ccc"
+            maxLength={4}
             // placeholder={errors ? errors.errors.mobile[0] : '9876543210'}
             // placeholderTextColor={errors ? '#e74c3c' : '#ccc'}
             keyboardType="number-pad"
-            value={mobile}
-            onChangeText={number => changeMobile(number)}
+            value={clientOtp}
+            onChangeText={number => changeOtp(number)}
             style={styles.input(null)}
           />
         </Item>
@@ -48,16 +51,18 @@ class RequestOtpForm extends PureComponent {
           <Button
             rounded
             small
-            disabled={this.isDisable(mobile)}
-            style={this.isDisable(mobile) ? styles.submitButtonDisabled : styles.submitButton}
-            onPress={() => requestOtp(navigation, 'send')}
+            disabled={this.isDisable(clientOtp)}
+            style={this.isDisable(clientOtp) ? styles.submitButtonDisabled : styles.submitButton}
+            onPress={() => verifyOtp(navigation)}
           >
             <Text
               style={
-                this.isDisable(mobile) ? styles.submitButtonTextDisabled : styles.submitButtonText
+                this.isDisable(clientOtp)
+                  ? styles.submitButtonTextDisabled
+                  : styles.submitButtonText
               }
             >
-              SEND OTP
+              VERIFY OTP
             </Text>
           </Button>
         </Item>
@@ -66,4 +71,4 @@ class RequestOtpForm extends PureComponent {
   }
 }
 
-export default RequestOtpForm;
+export default VerifyOtpForm;

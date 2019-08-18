@@ -1,15 +1,20 @@
 import { observer } from 'mobx-react';
 import { Header } from 'native-base';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, ReactFragment } from 'react';
 import { SafeAreaView } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 import Loader from '../../../components/Loader';
 import RequestOtpForm from '../../../components/Otp/RequestOtp/Form';
 import Info from '../../../components/Otp/RequestOtp/Info';
 import OtpStore from '../../../stores/otp';
 
+interface RequestOtpProps {
+  navigation: NavigationScreenProp<any, any>;
+}
+
 @observer
-class RequestOtp extends PureComponent {
-  render() {
+class RequestOtp extends PureComponent<RequestOtpProps> {
+  render(): ReactFragment {
     const { navigation } = this.props;
     const { loading } = OtpStore;
 
