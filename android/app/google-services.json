@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "331521794536",
+    "firebase_url": "https://pauzr-44881.firebaseio.com",
+    "project_id": "pauzr-44881",
+    "storage_bucket": "pauzr-44881.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331521794536:android:71ebdc81a5eb15c0",
+        "android_client_info": {
+          "package_name": "com.pauzr.org"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331521794536-bnavpav2e2tfk1dcf4cfseu9gqqeuoqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRKW_Pwll-1dFvZ6f0bCg-QCfNXjnAXM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331521794536-bnavpav2e2tfk1dcf4cfseu9gqqeuoqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
