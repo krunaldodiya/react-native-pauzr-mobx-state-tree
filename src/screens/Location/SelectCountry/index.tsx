@@ -1,8 +1,8 @@
-import { observer } from 'mobx-react';
-import { Body, Button, Header, Icon, Left, Text, Title, View } from 'native-base';
-import React, { PureComponent } from 'react';
-import { FlatList, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
+import {observer} from 'mobx-react';
+import {Body, Button, Header, Icon, Left, Text, Title, View} from 'native-base';
+import React, {PureComponent} from 'react';
+import {FlatList, SafeAreaView, TextInput, TouchableOpacity} from 'react-native';
+import {NavigationScreenProp} from 'react-navigation';
 import LocationStore from '../../../stores/location';
 import OtpStore from '../../../stores/otp';
 
@@ -17,7 +17,7 @@ class SelectCountry extends PureComponent<SelectCountryProps> {
   };
 
   componentDidMount() {
-    const { countryList, getCountryList } = LocationStore;
+    const {countryList, getCountryList} = LocationStore;
 
     if (countryList.length === 0) {
       getCountryList();
@@ -25,8 +25,8 @@ class SelectCountry extends PureComponent<SelectCountryProps> {
   }
 
   get filteredLocation() {
-    const { keywords } = this.state;
-    const { countryList } = LocationStore;
+    const {keywords} = this.state;
+    const {countryList} = LocationStore;
 
     if (keywords.length > 2) {
       return countryList.filter(location => {
@@ -46,22 +46,21 @@ class SelectCountry extends PureComponent<SelectCountryProps> {
           alignContent: 'center',
           alignItems: 'center',
           alignSelf: 'center',
-        }}
-      >
+        }}>
         <Text>loading...</Text>
       </View>
     );
   };
 
   renderSeparator = () => {
-    return <View style={{ height: 1, backgroundColor: '#ccc' }} />;
+    return <View style={{height: 1, backgroundColor: '#ccc'}} />;
   };
 
   showCountries = () => {
-    const { keywords } = this.state;
+    const {keywords} = this.state;
 
     return (
-      <View style={{ marginTop: 10 }}>
+      <View style={{marginTop: 10}}>
         <View
           style={{
             borderWidth: 1,
@@ -69,15 +68,14 @@ class SelectCountry extends PureComponent<SelectCountryProps> {
             paddingLeft: 10,
             marginTop: 5,
             marginHorizontal: 10,
-          }}
-        >
+          }}>
           <TextInput
             placeholder="Filter Countries"
             placeholderTextColor="#ccc"
             keyboardType="default"
             value={keywords}
-            onChangeText={value => this.setState({ keywords: value })}
-            style={{ color: '#000' }}
+            onChangeText={value => this.setState({keywords: value})}
+            style={{color: '#000'}}
           />
         </View>
 
@@ -86,8 +84,8 @@ class SelectCountry extends PureComponent<SelectCountryProps> {
           data={this.filteredLocation}
           keyExtractor={(_, index) => index.toString()}
           ItemSeparatorComponent={this.renderSeparator}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={{ padding: 20 }} onPress={() => this.setSelectedCountry(item)}>
+          renderItem={({item}) => (
+            <TouchableOpacity style={{padding: 20}} onPress={() => this.setSelectedCountry(item)}>
               <Text>{item.name}</Text>
             </TouchableOpacity>
           )}
@@ -97,24 +95,23 @@ class SelectCountry extends PureComponent<SelectCountryProps> {
   };
 
   setSelectedCountry = (country: object) => {
-    const { navigation } = this.props;
-    const { setSelectedCountry } = OtpStore;
+    const {navigation} = this.props;
+    const {setSelectedCountry} = OtpStore;
 
     setSelectedCountry(country);
     navigation.pop();
   };
 
   render() {
-    const { loading } = LocationStore;
-    const { navigation } = this.props;
+    const {loading} = LocationStore;
+    const {navigation} = this.props;
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{flex: 1}}>
         <Header
           androidStatusBarColor="#0D62A2"
           iosBarStyle="light-content"
-          style={{ backgroundColor: '#0D62A2' }}
-        >
+          style={{backgroundColor: '#0D62A2'}}>
           <Left>
             <Button transparent onPress={() => navigation.pop()}>
               <Icon name="arrow-back" />
@@ -125,7 +122,7 @@ class SelectCountry extends PureComponent<SelectCountryProps> {
           </Body>
         </Header>
 
-        <View style={{ flex: 1 }}>{loading ? this.showLoader() : this.showCountries()}</View>
+        <View style={{flex: 1}}>{loading ? this.showLoader() : this.showCountries()}</View>
       </SafeAreaView>
     );
   }
