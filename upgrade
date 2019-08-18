@@ -3,3 +3,15 @@
 babel.config.js
 package.json
 tsconfig.json
+
+
+rm -rf /usr/local/var/run/watchman && brew uninstall watchman && brew install watchman
+watchman watch-del-all
+rm -rf $TMPDIR/react-*
+rm -rf $TMPDIR/metro-*
+rm -rf $TMPDIR/haste-*
+rm -rf node_modules
+npm cache clean --force
+npm install
+react-native run-android
+npm start --reset-cache
