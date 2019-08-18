@@ -43,7 +43,7 @@ class App extends PureComponent {
   render(): ReactFragment {
     return (
       <View>
-        <Text>helloh</Text>
+        <Text>test</Text>
       </View>
     );
   }
