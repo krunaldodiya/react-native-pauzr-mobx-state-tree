@@ -3,7 +3,9 @@
 babel.config.js
 package.json
 tsconfig.json
-
+app.json
+jest.config
+metro.config
 
 rm -rf /usr/local/var/run/watchman && brew uninstall watchman && brew install watchman
 watchman watch-del-all
