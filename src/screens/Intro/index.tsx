@@ -17,23 +17,21 @@ class IntroPage extends PureComponent<IntroPageProps> {
     StatusBar.setBarStyle('light-content');
   }
 
-  onDone = () => {
+  onDone() {
     const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
-  };
+  }
 
-  onSkip = () => {
+  onSkip() {
     const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
-  };
+  }
 
   renderItem(data: any) {
     const {item} = data;
 
     return (
       <View style={styles.mainContent(item.backgroundColor)}>
-        <Text style={styles.title}>test</Text>
-
         <Text style={styles.title}>{item.title}</Text>
         <Image style={styles.image} source={{uri: getAssets(item.image)}} />
         <Text style={styles.text}>{item.text}</Text>

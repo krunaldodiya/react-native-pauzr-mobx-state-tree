@@ -8,7 +8,6 @@ export interface PostLikedProps {
   item: any;
 }
 
-@observer
 class PostLiked extends PureComponent<PostLikedProps> {
   render() {
     const {item} = this.props;
@@ -71,4 +70,4 @@ class PostLiked extends PureComponent<PostLikedProps> {
   }
 }
 
-export default PostLiked;
+export default observer(PostLiked);

@@ -8,7 +8,6 @@ export interface FocusAppBarProps {
   name: string;
 }
 
-@observer
 class FocusAppBar extends PureComponent<FocusAppBarProps> {
   render() {
     const {name, navigation} = this.props;
@@ -36,4 +35,4 @@ class FocusAppBar extends PureComponent<FocusAppBarProps> {
   }
 }
 
-export default FocusAppBar;
+export default observer(FocusAppBar);

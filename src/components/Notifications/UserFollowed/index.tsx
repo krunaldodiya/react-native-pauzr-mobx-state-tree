@@ -8,7 +8,6 @@ export interface UserFollowedProps {
   item: any;
 }
 
-@observer
 class UserFollowed extends PureComponent<UserFollowedProps> {
   render() {
     const {item} = this.props;
@@ -65,4 +64,4 @@ class UserFollowed extends PureComponent<UserFollowedProps> {
   }
 }
 
-export default UserFollowed;
+export default observer(UserFollowed);

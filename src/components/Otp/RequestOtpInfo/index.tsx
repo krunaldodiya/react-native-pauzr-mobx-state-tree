@@ -7,7 +7,6 @@ export interface RequestOtpInfoProps {
   title: string;
 }
 
-@observer
 class RequestOtpInfo extends PureComponent<RequestOtpInfoProps> {
   render() {
     const {title} = this.props;
@@ -23,4 +22,4 @@ class RequestOtpInfo extends PureComponent<RequestOtpInfoProps> {
   }
 }
 
-export default RequestOtpInfo;
+export default observer(RequestOtpInfo);

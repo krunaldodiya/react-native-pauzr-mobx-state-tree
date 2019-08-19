@@ -7,7 +7,6 @@ interface LoaderProps {
   loading: boolean;
 }
 
-@observer
 class Loader extends PureComponent<LoaderProps> {
   render() {
     const {loading} = this.props;
@@ -23,4 +22,4 @@ class Loader extends PureComponent<LoaderProps> {
   }
 }
 
-export default Loader;
+export default observer(Loader);

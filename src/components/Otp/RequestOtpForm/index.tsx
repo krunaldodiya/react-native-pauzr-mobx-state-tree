@@ -11,15 +11,14 @@ interface RequestOtpFormProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class RequestOtpForm extends PureComponent<RequestOtpFormProps> {
-  isDisable = (mobile: string) => {
+  isDisable(mobile: string) {
     if (mobile === null) {
       return true;
     }
 
     return mobile.length <= 5;
-  };
+  }
 
   render() {
     const {navigation} = this.props;
@@ -31,7 +30,7 @@ class RequestOtpForm extends PureComponent<RequestOtpFormProps> {
           style={styles.country}
           onPress={() => navigation.push(screens.SelectCountry)}>
           <Text style={{fontSize: 12, color: '#ccc', paddingLeft: 10}}>
-            {country ? country.name : 'Country'}
+            {country ? country.name : 'Select Country'}
           </Text>
         </TouchableOpacity>
 
@@ -68,4 +67,4 @@ class RequestOtpForm extends PureComponent<RequestOtpFormProps> {
   }
 }
 
-export default RequestOtpForm;
+export default observer(RequestOtpForm);

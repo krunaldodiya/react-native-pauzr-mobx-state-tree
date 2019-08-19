@@ -8,7 +8,6 @@ export interface VerifyOtpInfoProps {
   mobile: string;
 }
 
-@observer
 class VerifyOtpInfo extends PureComponent<VerifyOtpInfoProps> {
   render() {
     const {title, mobile} = this.props;
@@ -25,4 +24,4 @@ class VerifyOtpInfo extends PureComponent<VerifyOtpInfoProps> {
   }
 }
 
-export default VerifyOtpInfo;
+export default observer(VerifyOtpInfo);

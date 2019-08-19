@@ -10,7 +10,6 @@ interface VerifyOtpFormProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class VerifyOtpForm extends PureComponent<VerifyOtpFormProps> {
   isDisable = (clientOtp: number) => {
     if (clientOtp === null) {
@@ -68,4 +67,4 @@ class VerifyOtpForm extends PureComponent<VerifyOtpFormProps> {
   }
 }
 
-export default VerifyOtpForm;
+export default observer(VerifyOtpForm);

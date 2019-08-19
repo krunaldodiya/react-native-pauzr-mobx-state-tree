@@ -36,7 +36,6 @@ export interface AppProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class App extends PureComponent<AppProps> {
   async componentDidMount(): Promise<void> {
     const fcmToken = await firebase.messaging().getToken();
@@ -58,4 +57,4 @@ class App extends PureComponent<AppProps> {
   }
 }
 
-export default App;
+export default observer(App);

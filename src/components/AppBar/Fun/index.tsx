@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react';
-import {Body, Button, Header, Icon, Right, Title, Left} from 'native-base';
+import {Body, Button, Header, Icon, Left, Right, Title} from 'native-base';
 import React, {PureComponent} from 'react';
 import {NavigationScreenProp} from 'react-navigation';
 
@@ -8,7 +8,6 @@ export interface FunAppBarProps {
   name: string;
 }
 
-@observer
 class FunAppBar extends PureComponent<FunAppBarProps> {
   render() {
     const {name, navigation} = this.props;
@@ -32,4 +31,4 @@ class FunAppBar extends PureComponent<FunAppBarProps> {
   }
 }
 
-export default FunAppBar;
+export default observer(FunAppBar);

@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react';
-import React, {PureComponent} from 'react';
+import React, {PureComponent, ReactFragment} from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
 import Loader from '../../../components/Loader';
@@ -17,7 +17,7 @@ class RequestOtpPage extends PureComponent<RequestOtpPageProps> {
     StatusBar.setBarStyle('light-content');
   }
 
-  render() {
+  render(): ReactFragment {
     const {navigation} = this.props;
     const {loading} = OtpStore;
 

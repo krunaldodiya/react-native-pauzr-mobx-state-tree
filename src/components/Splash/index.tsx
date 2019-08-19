@@ -1,13 +1,11 @@
 import {observer} from 'mobx-react';
 import React, {PureComponent} from 'react';
 import {ActivityIndicator, SafeAreaView} from 'react-native';
-import {NavigationScreenProp} from 'react-navigation';
 
 export interface SplashScreenProps {
   color: string;
 }
 
-@observer
 class SplashScreen extends PureComponent<SplashScreenProps> {
   render() {
     const {color} = this.props;
@@ -26,4 +24,4 @@ class SplashScreen extends PureComponent<SplashScreenProps> {
   }
 }
 
-export default SplashScreen;
+export default observer(SplashScreen);
