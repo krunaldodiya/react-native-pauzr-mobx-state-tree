@@ -1,15 +1,14 @@
 import {observer} from 'mobx-react';
 import React, {PureComponent} from 'react';
 import {Text, View} from 'react-native';
+import {NavigationScreenProp} from 'react-navigation';
 import FocusAppBar from '../../../components/AppBar/Focus';
 import AuthStore from '../../../stores/auth';
-import {NavigationScreenProp} from 'react-navigation';
 
 export interface ScoreboardPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class ScoreboardPage extends PureComponent<ScoreboardPageProps> {
   componentDidMount() {
     console.log('ScoreboardPage');
@@ -28,4 +27,4 @@ class ScoreboardPage extends PureComponent<ScoreboardPageProps> {
   }
 }
 
-export default ScoreboardPage;
+export default observer(ScoreboardPage);

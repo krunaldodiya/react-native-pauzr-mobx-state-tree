@@ -2,17 +2,16 @@ import {observer} from 'mobx-react';
 import {Text, View} from 'native-base';
 import React, {PureComponent} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
+import {NavigationScreenProp} from 'react-navigation';
 import FunAppBar from '../../../components/AppBar/Fun';
 import PostLiked from '../../../components/Notifications/PostLiked';
 import UserFollowed from '../../../components/Notifications/UserFollowed';
 import NotificationStore from '../../../stores/notifications';
-import {NavigationScreenProp} from 'react-navigation';
 
 export interface NotificationsPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class NotificationsPage extends PureComponent<NotificationsPageProps> {
   async componentDidMount() {
     this.getNotifications();
@@ -71,4 +70,4 @@ class NotificationsPage extends PureComponent<NotificationsPageProps> {
   }
 }
 
-export default NotificationsPage;
+export default observer(NotificationsPage);

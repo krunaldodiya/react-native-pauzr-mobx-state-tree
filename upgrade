@@ -18,5 +18,5 @@ npm install
 react-native run-android
 npm start --reset-cache
 
-
 don't use arrow function, it causes hot reload issue
+don't use @observer instead observer(RequestOtpPage) use this, it causes hot reload issue

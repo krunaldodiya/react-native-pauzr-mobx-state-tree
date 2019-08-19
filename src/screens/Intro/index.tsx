@@ -14,6 +14,7 @@ export interface IntroPageProps {
 class IntroPage extends PureComponent<IntroPageProps> {
   componentDidMount() {
     StatusBar.setBackgroundColor('#0D62A2');
+    StatusBar.setBarStyle('light-content');
   }
 
   onDone = () => {

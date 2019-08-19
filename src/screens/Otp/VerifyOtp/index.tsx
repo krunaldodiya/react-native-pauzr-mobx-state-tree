@@ -12,7 +12,6 @@ interface VerifyOtpPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class VerifyOtpPage extends PureComponent<VerifyOtpPageProps> {
   render() {
     const {navigation} = this.props;
@@ -33,4 +32,4 @@ class VerifyOtpPage extends PureComponent<VerifyOtpPageProps> {
   }
 }
 
-export default VerifyOtpPage;
+export default observer(VerifyOtpPage);

@@ -10,7 +10,6 @@ interface SelectCountryPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class SelectCountryPage extends PureComponent<SelectCountryPageProps> {
   state = {
     keywords: '',
@@ -128,4 +127,4 @@ class SelectCountryPage extends PureComponent<SelectCountryPageProps> {
   }
 }
 
-export default SelectCountryPage;
+export default observer(SelectCountryPage);

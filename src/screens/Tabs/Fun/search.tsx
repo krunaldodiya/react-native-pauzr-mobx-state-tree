@@ -9,7 +9,6 @@ export interface SearchPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class SearchPage extends PureComponent<SearchPageProps> {
   componentDidMount() {
     console.log('SearchPage');
@@ -28,4 +27,4 @@ class SearchPage extends PureComponent<SearchPageProps> {
   }
 }
 
-export default SearchPage;
+export default observer(SearchPage);

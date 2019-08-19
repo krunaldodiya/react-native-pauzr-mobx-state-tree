@@ -3,17 +3,16 @@ import {Button, Card, CardItem, Icon, Left, Text, Thumbnail} from 'native-base';
 import React, {PureComponent} from 'react';
 import {ActivityIndicator, Dimensions, FlatList, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import {NavigationScreenProp} from 'react-navigation';
 import FunAppBar from '../../../components/AppBar/Fun';
 import getAssets from '../../../libs/image';
 import theme from '../../../libs/theme';
 import FeedStore from '../../../stores/feed';
-import {NavigationScreenProp} from 'react-navigation';
 
 export interface FeedsPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class FeedsPage extends PureComponent<FeedsPageProps> {
   async componentDidMount() {
     await this.getFeeds();
@@ -115,4 +114,4 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
   }
 }
 
-export default FeedsPage;
+export default observer(FeedsPage);

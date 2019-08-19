@@ -2,17 +2,16 @@ import {observer} from 'mobx-react';
 import {Body, Left, List, ListItem, Right, Text, Thumbnail, View} from 'native-base';
 import React, {PureComponent} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
+import {NavigationScreenProp} from 'react-navigation';
 import FunAppBar from '../../../components/AppBar/Fun';
+import getAssets from '../../../libs/image';
 import theme from '../../../libs/theme';
 import LotteryStore from '../../../stores/lottery';
-import getAssets from '../../../libs/image';
-import {NavigationScreenProp} from 'react-navigation';
 
 export interface WinnersPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
 class WinnersPage extends PureComponent<WinnersPageProps> {
   async componentDidMount() {
     this.getLotteryWinners();
@@ -114,4 +113,4 @@ class WinnersPage extends PureComponent<WinnersPageProps> {
   }
 }
 
-export default WinnersPage;
+export default observer(WinnersPage);

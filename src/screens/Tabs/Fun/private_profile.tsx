@@ -1,17 +1,8 @@
-import {observer} from 'mobx-react';
-import {Button, Icon} from 'native-base';
-import React, {PureComponent} from 'react';
-import {
-  Dimensions,
-  FlatList,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-  ActivityIndicator,
-} from 'react-native';
-import {NavigationScreenProp} from 'react-navigation';
+import { observer } from 'mobx-react';
+import { Button, Icon } from 'native-base';
+import React, { PureComponent } from 'react';
+import { ActivityIndicator, Dimensions, FlatList, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
 import FunAppBar from '../../../components/AppBar/Fun';
 import getAssets from '../../../libs/image';
 import theme from '../../../libs/theme';
@@ -22,7 +13,7 @@ export interface PrivateProfilePageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-@observer
+
 class PrivateProfilePage extends PureComponent<PrivateProfilePageProps> {
   state = {
     tab: 0,
@@ -281,4 +272,4 @@ class PrivateProfilePage extends PureComponent<PrivateProfilePageProps> {
   }
 }
 
-export default PrivateProfilePage;
+export default observer(PrivateProfilePage);
