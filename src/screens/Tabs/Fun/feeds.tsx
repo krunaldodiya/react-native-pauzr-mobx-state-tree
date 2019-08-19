@@ -13,16 +13,18 @@ export interface FeedsPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
+const deviceWidth = Dimensions.get('window').width;
+
 class FeedsPage extends PureComponent<FeedsPageProps> {
-  async componentDidMount() {
-    await this.getFeeds();
+  componentDidMount() {
+    this.getFeeds();
   }
 
-  getFeeds = async () => {
+  async getFeeds() {
     await FeedStore.getFeeds();
-  };
+  }
 
-  renderItem = (data: any) => {
+  renderItem(data: any) {
     const {item} = data;
 
     return (
@@ -56,10 +58,9 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
 
           <View style={{flex: 1}}>
             <FastImage
-              style={{width: Dimensions.get('screen').width - 4}}
+              style={{width: deviceWidth, height: deviceWidth}}
               source={{uri: getAssets(item.url)}}
-              resizeMode="contain"
-              resizeMethod="auto"
+              resizeMode={FastImage.resizeMode.contain}
             />
           </View>
         </View>
@@ -74,9 +75,9 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
         </CardItem>
       </Card>
     );
-  };
+  }
 
-  showLoading = () => {
+  showLoading() {
     return (
       <View
         style={{
@@ -91,7 +92,7 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
         )}
       </View>
     );
-  };
+  }
 
   render() {
     const {navigation} = this.props;
@@ -104,7 +105,7 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
           keyboardShouldPersistTaps="handled"
           data={FeedStore.allFeeds}
           keyExtractor={(_, index) => index.toString()}
-          renderItem={this.renderItem}
+          renderItem={data => this.renderItem(data)}
           onEndReached={this.getFeeds}
           onEndReachedThreshold={0.5}
           ListFooterComponent={this.showLoading}

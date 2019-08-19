@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react';
-import {Header} from 'native-base';
+import {Content} from 'native-base';
 import React, {PureComponent} from 'react';
 import {SafeAreaView} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
@@ -19,14 +19,15 @@ class VerifyOtpPage extends PureComponent<VerifyOtpPageProps> {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        <Header
-          androidStatusBarColor="#0D62A2"
-          iosBarStyle="light-content"
-          style={{backgroundColor: '#0D62A2'}}
-        />
-        <Loader loading={loading} />
-        <VerifyOtpInfo title="VERIFY OTP" mobile={OtpStore.mobile} />
-        <VerifyOtpForm navigation={navigation} />
+        <Content
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: 'center',
+          }}>
+          <Loader loading={loading} />
+          <VerifyOtpInfo title="VERIFY OTP" mobile={OtpStore.mobile} />
+          <VerifyOtpForm navigation={navigation} />
+        </Content>
       </SafeAreaView>
     );
   }

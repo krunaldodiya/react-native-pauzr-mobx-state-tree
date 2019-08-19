@@ -1,8 +1,8 @@
 import {observer} from 'mobx-react';
-import {Header} from 'native-base';
+import {Header, Content} from 'native-base';
 import React, {PureComponent, ReactFragment} from 'react';
 import {SafeAreaView} from 'react-native';
-import {NavigationScreenProp} from 'react-navigation';
+import {NavigationScreenProp, ScrollView} from 'react-navigation';
 import Loader from '../../../components/Loader';
 import RequestOtpForm from '../../../components/Otp/RequestOtpForm';
 import RequestOtpInfo from '../../../components/Otp/RequestOtpInfo';
@@ -18,16 +18,16 @@ class RequestOtpPage extends PureComponent<RequestOtpPageProps> {
     const {loading} = OtpStore;
 
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <Header
-          androidStatusBarColor="#0D62A2"
-          iosBarStyle="light-content"
-          style={{backgroundColor: '#0D62A2'}}
-        />
-
+      <SafeAreaView style={{flex: 1, justifyContent: 'space-between'}}>
         <Loader loading={loading} />
-        <RequestOtpInfo title="REQUEST OTP" />
-        <RequestOtpForm navigation={navigation} />
+        <Content
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: 'center',
+          }}>
+          <RequestOtpInfo title="REQUEST OTP" />
+          <RequestOtpForm navigation={navigation} />
+        </Content>
       </SafeAreaView>
     );
   }
