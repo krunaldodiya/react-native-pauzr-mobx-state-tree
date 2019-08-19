@@ -1,14 +1,19 @@
-import { observer } from 'mobx-react';
-import { Body, Left, List, ListItem, Right, Text, Thumbnail, View } from 'native-base';
-import React, { PureComponent } from 'react';
-import { ActivityIndicator, FlatList } from 'react-native';
+import {observer} from 'mobx-react';
+import {Body, Left, List, ListItem, Right, Text, Thumbnail, View} from 'native-base';
+import React, {PureComponent} from 'react';
+import {ActivityIndicator, FlatList} from 'react-native';
 import FunAppBar from '../../../components/AppBar/Fun';
 import theme from '../../../libs/theme';
 import LotteryStore from '../../../stores/lottery';
 import getAssets from '../../../libs/image';
+import {NavigationScreenProp} from 'react-navigation';
+
+export interface WinnersPageProps {
+  navigation: NavigationScreenProp<any, any>;
+}
 
 @observer
-class WinnersPage extends PureComponent {
+class WinnersPage extends PureComponent<WinnersPageProps> {
   async componentDidMount() {
     this.getLotteryWinners();
   }
@@ -17,14 +22,16 @@ class WinnersPage extends PureComponent {
     await LotteryStore.getLotteryWinners();
   };
 
-  renderItem = ({ item }) => {
+  renderItem = (data: any) => {
+    const {item} = data;
+
     return (
       <List>
         <ListItem avatar>
           <Left>
             <Thumbnail
-              source={{ uri: getAssets(item.user.avatar) }}
-              style={{ height: 40, width: 40 }}
+              source={{uri: getAssets(item.user.avatar)}}
+              style={{height: 40, width: 40}}
             />
           </Left>
           <Body>
@@ -33,8 +40,7 @@ class WinnersPage extends PureComponent {
                 fontSize: 16,
                 fontFamily: theme.fonts.TitilliumWebSemiBold,
                 marginBottom: 5,
-              }}
-            >
+              }}>
               {item.user.name}
             </Text>
             <Text
@@ -42,8 +48,7 @@ class WinnersPage extends PureComponent {
                 fontSize: 12,
                 fontFamily: theme.fonts.TitilliumWebRegular,
               }}
-              note
-            >
+              note>
               Won ₹{item.amount}
             </Text>
           </Body>
@@ -54,8 +59,7 @@ class WinnersPage extends PureComponent {
                 fontFamily: theme.fonts.TitilliumWebSemiBold,
                 marginBottom: 5,
               }}
-              note
-            >
+              note>
               {item.date}
             </Text>
             <Text
@@ -63,8 +67,7 @@ class WinnersPage extends PureComponent {
                 fontSize: 12,
                 fontFamily: theme.fonts.TitilliumWebSemiBold,
               }}
-              note
-            >
+              note>
               {item.time}
             </Text>
           </Right>
@@ -80,8 +83,7 @@ class WinnersPage extends PureComponent {
           justifyContent: 'center',
           alignItems: 'center',
           padding: 20,
-        }}
-      >
+        }}>
         {LotteryStore.loading === false && LotteryStore.current_page === LotteryStore.last_page ? (
           <Text>No more results.</Text>
         ) : (
@@ -92,10 +94,10 @@ class WinnersPage extends PureComponent {
   };
 
   render() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
 
     return (
-      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      <View style={{flex: 1, backgroundColor: '#fff'}}>
         <FunAppBar name="Winners" navigation={navigation} />
 
         <FlatList
@@ -104,7 +106,7 @@ class WinnersPage extends PureComponent {
           keyExtractor={(_, index) => index.toString()}
           renderItem={this.renderItem}
           onEndReached={this.getLotteryWinners}
-          onEndReachedThreshold="0.5"
+          onEndReachedThreshold={0.5}
           ListFooterComponent={this.showLoading}
         />
       </View>

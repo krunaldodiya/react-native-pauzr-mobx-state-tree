@@ -1,21 +1,25 @@
-import { observer } from 'mobx-react';
-import { Body, Left, List, ListItem, Right, Text, Thumbnail } from 'native-base';
-import React, { PureComponent } from 'react';
-import theme from '../../../libs/theme';
+import {observer} from 'mobx-react';
+import {Body, Left, List, ListItem, Right, Text, Thumbnail} from 'native-base';
+import React, {PureComponent} from 'react';
 import getAssets from '../../../libs/image';
+import theme from '../../../libs/theme';
+
+export interface UserFollowedProps {
+  item: any;
+}
 
 @observer
-class UserFollowed extends PureComponent {
+class UserFollowed extends PureComponent<UserFollowedProps> {
   render() {
-    const { item } = this.props;
+    const {item} = this.props;
 
     return (
       <List>
         <ListItem avatar>
           <Left>
             <Thumbnail
-              source={{ uri: getAssets(item.user.avatar) }}
-              style={{ height: 40, width: 40 }}
+              source={{uri: getAssets(item.user.avatar)}}
+              style={{height: 40, width: 40}}
             />
           </Left>
 
@@ -27,8 +31,7 @@ class UserFollowed extends PureComponent {
                   color: '#0D62A2',
                   fontWeight: item.read ? 'normal' : '600',
                   fontFamily: theme.fonts.TitilliumWebRegular,
-                }}
-              >
+                }}>
                 {item.user.name}{' '}
               </Text>
               <Text
@@ -37,8 +40,7 @@ class UserFollowed extends PureComponent {
                   color: item.read ? 'grey' : 'black',
                   fontWeight: item.read ? 'normal' : '600',
                   fontFamily: theme.fonts.TitilliumWebRegular,
-                }}
-              >
+                }}>
                 started following you.
               </Text>
             </Text>
@@ -51,8 +53,7 @@ class UserFollowed extends PureComponent {
                 fontWeight: item.read ? 'normal' : '600',
                 fontFamily: theme.fonts.TitilliumWebRegular,
               }}
-              note
-            >
+              note>
               {item.when}
             </Text>
           </Body>

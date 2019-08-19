@@ -1,10 +1,15 @@
-import { observer } from 'mobx-react';
-import { Text, View } from 'native-base';
-import React, { PureComponent } from 'react';
+import {observer} from 'mobx-react';
+import {Text, View} from 'native-base';
+import React, {PureComponent} from 'react';
 import styles from './styles';
+import {NavigationScreenProp} from 'react-navigation';
+
+export interface InfoProps {
+  navigation: NavigationScreenProp<any, any>;
+}
 
 @observer
-class Info extends PureComponent {
+class Info extends PureComponent<InfoProps> {
   render() {
     return (
       <View style={styles.infoWrapper}>

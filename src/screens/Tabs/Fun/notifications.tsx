@@ -1,14 +1,19 @@
-import { observer } from 'mobx-react';
-import { Text, View } from 'native-base';
-import React, { PureComponent } from 'react';
-import { ActivityIndicator, FlatList } from 'react-native';
+import {observer} from 'mobx-react';
+import {Text, View} from 'native-base';
+import React, {PureComponent} from 'react';
+import {ActivityIndicator, FlatList} from 'react-native';
 import FunAppBar from '../../../components/AppBar/Fun';
 import PostLiked from '../../../components/Notifications/PostLiked';
 import UserFollowed from '../../../components/Notifications/UserFollowed';
 import NotificationStore from '../../../stores/notifications';
+import {NavigationScreenProp} from 'react-navigation';
+
+export interface NotificationsPageProps {
+  navigation: NavigationScreenProp<any, any>;
+}
 
 @observer
-class NotificationsPage extends PureComponent {
+class NotificationsPage extends PureComponent<NotificationsPageProps> {
   async componentDidMount() {
     this.getNotifications();
   }
@@ -17,7 +22,9 @@ class NotificationsPage extends PureComponent {
     await NotificationStore.getNotifications();
   };
 
-  renderItem = ({ item }) => {
+  renderItem = (data: any) => {
+    const {item} = data;
+
     if (item.type === 'App\\Notifications\\PostLiked') {
       return <PostLiked item={item} />;
     }
@@ -32,8 +39,7 @@ class NotificationsPage extends PureComponent {
           justifyContent: 'center',
           alignItems: 'center',
           padding: 20,
-        }}
-      >
+        }}>
         {NotificationStore.loading === false &&
         NotificationStore.current_page === NotificationStore.last_page ? (
           <Text>No more results.</Text>
@@ -45,10 +51,10 @@ class NotificationsPage extends PureComponent {
   };
 
   render() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
 
     return (
-      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      <View style={{flex: 1, backgroundColor: '#fff'}}>
         <FunAppBar name="Notifications" navigation={navigation} />
 
         <FlatList
@@ -57,7 +63,7 @@ class NotificationsPage extends PureComponent {
           keyExtractor={(_, index) => index.toString()}
           renderItem={this.renderItem}
           onEndReached={this.getNotifications}
-          onEndReachedThreshold="0.5"
+          onEndReachedThreshold={0.5}
           ListFooterComponent={this.showLoading}
         />
       </View>
