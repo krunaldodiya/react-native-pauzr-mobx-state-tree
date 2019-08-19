@@ -1,5 +1,6 @@
+import {Header} from 'native-base';
 import React, {PureComponent, ReactFragment} from 'react';
-import {Image, SafeAreaView, StatusBar, Text, View} from 'react-native';
+import {Image, SafeAreaView, Text, View} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {NavigationScreenProp} from 'react-navigation';
 import getAssets from '../../libs/image';
@@ -12,10 +13,6 @@ export interface IntroPageProps {
 }
 
 class IntroPage extends PureComponent<IntroPageProps> {
-  componentDidMount() {
-    StatusBar.setBackgroundColor('#0D62A2');
-  }
-
   onDone = () => {
     const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
@@ -55,6 +52,11 @@ class IntroPage extends PureComponent<IntroPageProps> {
 
     return (
       <SafeAreaView style={{flex: 1}}>
+        <Header
+          androidStatusBarColor="#0D62A2"
+          iosBarStyle="light-content"
+          style={{backgroundColor: '#0D62A2'}}
+        />
         <AppIntroSlider
           slides={this.getTags([
             getScreens.intro_slider_1.tags,
