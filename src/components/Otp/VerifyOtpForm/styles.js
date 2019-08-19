@@ -2,18 +2,8 @@ import {StyleSheet} from 'react-native';
 import theme from '../../../libs/theme';
 
 export default StyleSheet.create({
-  country: {
-    alignSelf: 'stretch',
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingVertical: 17,
-    paddingLeft: 10,
-    marginBottom: 15,
-    marginHorizontal: 15,
-  },
   formWrapper: {
-    flex: 1,
+    flex: 4,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',

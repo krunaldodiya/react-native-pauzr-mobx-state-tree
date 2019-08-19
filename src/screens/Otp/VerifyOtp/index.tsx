@@ -25,7 +25,7 @@ class VerifyOtpPage extends PureComponent<VerifyOtpPageProps> {
           style={{backgroundColor: '#0D62A2'}}
         />
         <Loader loading={loading} />
-        <VerifyOtpInfo title="test" mobile="test" />
+        <VerifyOtpInfo title="VERIFY OTP" mobile={OtpStore.mobile} />
         <VerifyOtpForm navigation={navigation} />
       </SafeAreaView>
     );

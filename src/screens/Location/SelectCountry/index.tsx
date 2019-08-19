@@ -5,6 +5,7 @@ import {FlatList, SafeAreaView, TextInput, TouchableOpacity} from 'react-native'
 import {NavigationScreenProp} from 'react-navigation';
 import LocationStore from '../../../stores/location';
 import OtpStore from '../../../stores/otp';
+import theme from '../../../libs/theme';
 
 interface SelectCountryPageProps {
   navigation: NavigationScreenProp<any, any>;
@@ -51,55 +52,71 @@ class SelectCountryPage extends PureComponent<SelectCountryPageProps> {
     );
   }
 
-  renderSeparator = () => {
+  renderSeparator() {
     return <View style={{height: 1, backgroundColor: '#ccc'}} />;
-  };
+  }
 
-  showCountries = () => {
+  showCountries() {
     const {keywords} = this.state;
 
     return (
       <View style={{marginTop: 10}}>
         <View
           style={{
+            backgroundColor: 'lightgrey',
             borderWidth: 1,
             borderColor: '#ccc',
-            paddingLeft: 10,
-            marginTop: 5,
             marginHorizontal: 10,
+            borderRadius: 10,
           }}>
           <TextInput
             placeholder="Filter Countries"
-            placeholderTextColor="#ccc"
+            placeholderTextColor="#555"
             keyboardType="default"
             value={keywords}
             onChangeText={value => this.setState({keywords: value})}
-            style={{color: '#000'}}
+            returnKeyType="search"
+            style={{
+              color: '#000',
+              fontFamily: theme.fonts.TitilliumWebLight,
+              fontSize: 14,
+              paddingVertical: 6,
+              paddingLeft: 15,
+            }}
           />
         </View>
 
-        <FlatList
-          keyboardShouldPersistTaps="handled"
-          data={this.filteredLocation}
-          keyExtractor={(_, index) => index.toString()}
-          ItemSeparatorComponent={this.renderSeparator}
-          renderItem={({item}) => (
-            <TouchableOpacity style={{padding: 20}} onPress={() => this.setSelectedCountry(item)}>
-              <Text>{item.name}</Text>
-            </TouchableOpacity>
-          )}
-        />
+        <View style={{marginLeft: 8}}>
+          <FlatList
+            keyboardShouldPersistTaps="handled"
+            data={this.filteredLocation}
+            keyExtractor={(_, index) => index.toString()}
+            ItemSeparatorComponent={this.renderSeparator}
+            renderItem={({item}) => (
+              <TouchableOpacity style={{padding: 15}} onPress={() => this.setSelectedCountry(item)}>
+                <Text
+                  style={{
+                    color: '#000',
+                    fontFamily: theme.fonts.TitilliumWebRegular,
+                    fontSize: 14,
+                  }}>
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
       </View>
     );
-  };
+  }
 
-  setSelectedCountry = (country: object) => {
+  setSelectedCountry(country: object) {
     const {navigation} = this.props;
     const {setSelectedCountry} = OtpStore;
 
     setSelectedCountry(country);
     navigation.pop();
-  };
+  }
 
   render() {
     const {loading} = LocationStore;
