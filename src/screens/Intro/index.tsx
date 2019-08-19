@@ -1,6 +1,5 @@
-import {Header} from 'native-base';
 import React, {PureComponent, ReactFragment} from 'react';
-import {Image, SafeAreaView, Text, View} from 'react-native';
+import {Image, SafeAreaView, StatusBar, Text, View} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {NavigationScreenProp} from 'react-navigation';
 import getAssets from '../../libs/image';
@@ -28,11 +27,8 @@ class IntroPage extends PureComponent<IntroPageProps, object, any> {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        <Header
-          androidStatusBarColor={item.backgroundColor}
-          iosBarStyle="light-content"
-          style={{backgroundColor: item.backgroundColor}}
-        />
+        <StatusBar backgroundColor={item.backgroundColor} barStyle="light-content" />
+
         <View style={styles.mainContent(item.backgroundColor)}>
           <Text style={styles.title}>{item.title}</Text>
           <Image style={styles.image} source={{uri: getAssets(item.image)}} />

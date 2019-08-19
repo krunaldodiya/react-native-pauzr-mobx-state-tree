@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import theme from '../../libs/theme';
 
 export default StyleSheet.create({
@@ -6,7 +6,7 @@ export default StyleSheet.create({
     return {
       flex: 1,
       flexDirection: 'column',
-      justifyContent: 'center',
+      justifyContent: 'space-evenly',
       alignItems: 'center',
       backgroundColor,
     };
