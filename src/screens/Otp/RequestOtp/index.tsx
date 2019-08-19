@@ -3,34 +3,30 @@ import {Header} from 'native-base';
 import React, {PureComponent, ReactFragment} from 'react';
 import {SafeAreaView} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
-import Loader from '../../../components/Loader';
-import RequestOtpForm from '../../../components/Otp/RequestOtp/Form';
-import Info from '../../../components/Otp/RequestOtp/Info';
-import OtpStore from '../../../stores/otp';
 
-interface RequestOtpProps {
+interface RequestOtpPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
 @observer
-class RequestOtp extends PureComponent<RequestOtpProps> {
+class RequestOtpPage extends PureComponent<RequestOtpPageProps> {
   render(): ReactFragment {
-    const {navigation} = this.props;
-    const {loading} = OtpStore;
+    // const {navigation} = this.props;
+    // const {loading} = OtpStore;
 
     return (
       <SafeAreaView style={{flex: 1}}>
         <Header
-          androidStatusBarColor="#0D62A2"
+          androidStatusBarColor="#fff"
           iosBarStyle="light-content"
-          style={{backgroundColor: '#0D62A2'}}
+          style={{backgroundColor: '#fff'}}
         />
-        <Loader loading={loading} />
-        <Info />
-        <RequestOtpForm navigation={navigation} />
+        {/* <Loader loading={loading} />
+        <RequestOtpInfo title="REQUEST OTP" />
+        <RequestOtpForm navigation={navigation} /> */}
       </SafeAreaView>
     );
   }
 }
 
-export default RequestOtp;
+export default RequestOtpPage;

@@ -2,18 +2,19 @@ import {observer} from 'mobx-react';
 import {Text, View} from 'native-base';
 import React, {PureComponent} from 'react';
 import styles from './styles';
-import {NavigationScreenProp} from 'react-navigation';
 
-export interface InfoProps {
-  navigation: NavigationScreenProp<any, any>;
+export interface RequestOtpInfoProps {
+  title: string;
 }
 
 @observer
-class Info extends PureComponent<InfoProps> {
+class RequestOtpInfo extends PureComponent<RequestOtpInfoProps> {
   render() {
+    const {title} = this.props;
+
     return (
       <View style={styles.infoWrapper}>
-        <Text style={styles.infoHeading}>REQUEST OTP</Text>
+        <Text style={styles.infoHeading}>{title}</Text>
         <Text style={styles.infoParagraph}>
           Please, Enter your mobile to receive verification code
         </Text>
@@ -22,4 +23,4 @@ class Info extends PureComponent<InfoProps> {
   }
 }
 
-export default Info;
+export default RequestOtpInfo;

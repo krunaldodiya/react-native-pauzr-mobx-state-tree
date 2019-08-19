@@ -1,9 +1,9 @@
-import { observer } from 'mobx-react';
-import { Button, Form, Input, Item, Text } from 'native-base';
-import React, { PureComponent } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
-import OtpStore from '../../../../stores/otp';
+import {observer} from 'mobx-react';
+import {Button, Form, Input, Item, Text} from 'native-base';
+import React, {PureComponent} from 'react';
+import {TouchableOpacity} from 'react-native';
+import {NavigationScreenProp} from 'react-navigation';
+import OtpStore from '../../../stores/otp';
 import styles from './styles';
 
 interface VerifyOtpFormProps {
@@ -21,16 +21,15 @@ class VerifyOtpForm extends PureComponent<VerifyOtpFormProps> {
   };
 
   render() {
-    const { navigation } = this.props;
-    const { clientOtp, changeOtp, requestOtp, verifyOtp } = OtpStore;
+    const {navigation} = this.props;
+    const {clientOtp, changeOtp, requestOtp, verifyOtp} = OtpStore;
 
     return (
       <Form style={styles.formWrapper}>
         <TouchableOpacity
-          style={{ marginBottom: 30 }}
-          onPress={() => requestOtp(navigation, 'resend')}
-        >
-          <Text style={{ fontSize: 14, color: '#e74c3c', paddingLeft: 10 }}>RESEND OTP</Text>
+          style={{marginBottom: 30}}
+          onPress={() => requestOtp(navigation, 'resend')}>
+          <Text style={{fontSize: 14, color: '#e74c3c', paddingLeft: 10}}>RESEND OTP</Text>
         </TouchableOpacity>
 
         <Item style={styles.inputWrapper}>
@@ -53,15 +52,13 @@ class VerifyOtpForm extends PureComponent<VerifyOtpFormProps> {
             small
             disabled={this.isDisable(clientOtp)}
             style={this.isDisable(clientOtp) ? styles.submitButtonDisabled : styles.submitButton}
-            onPress={() => verifyOtp(navigation)}
-          >
+            onPress={() => verifyOtp(navigation)}>
             <Text
               style={
                 this.isDisable(clientOtp)
                   ? styles.submitButtonTextDisabled
                   : styles.submitButtonText
-              }
-            >
+              }>
               VERIFY OTP
             </Text>
           </Button>

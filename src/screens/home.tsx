@@ -4,11 +4,11 @@ import FocusTabs from './Tabs/Focus';
 import FunTabs from './Tabs/Fun';
 import {NavigationScreenProp} from 'react-navigation';
 
-export interface HomeProps {
+export interface HomePageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-class Home extends PureComponent<HomeProps> {
+class HomePage extends PureComponent<HomePageProps> {
   render() {
     return (
       <Swiper
@@ -24,4 +24,4 @@ class Home extends PureComponent<HomeProps> {
   }
 }
 
-export default Home;
+export default HomePage;

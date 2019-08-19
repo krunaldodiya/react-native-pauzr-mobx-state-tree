@@ -8,11 +8,11 @@ import screens from '../../libs/screens';
 import ThemeStore from '../../stores/theme';
 import styles from './styles';
 
-export interface IntroProps {
+export interface IntroPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-class Intro extends PureComponent<IntroProps, object, any> {
+class IntroPage extends PureComponent<IntroPageProps, object, any> {
   onDone() {
     const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
@@ -79,4 +79,4 @@ class Intro extends PureComponent<IntroProps, object, any> {
   }
 }
 
-export default Intro;
+export default IntroPage;

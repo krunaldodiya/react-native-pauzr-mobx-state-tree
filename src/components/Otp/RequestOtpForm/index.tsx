@@ -1,10 +1,10 @@
-import { observer } from 'mobx-react';
-import { Button, Form, Input, Item, Text } from 'native-base';
-import React, { PureComponent } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
-import screens from '../../../../libs/screens';
-import OtpStore from '../../../../stores/otp';
+import {observer} from 'mobx-react';
+import {Button, Form, Input, Item, Text} from 'native-base';
+import React, {PureComponent} from 'react';
+import {TouchableOpacity} from 'react-native';
+import {NavigationScreenProp} from 'react-navigation';
+import screens from '../../../libs/screens';
+import OtpStore from '../../../stores/otp';
 import styles from './styles';
 
 interface RequestOtpFormProps {
@@ -22,16 +22,15 @@ class RequestOtpForm extends PureComponent<RequestOtpFormProps> {
   };
 
   render() {
-    const { navigation } = this.props;
-    const { mobile, country, changeMobile, requestOtp } = OtpStore;
+    const {navigation} = this.props;
+    const {mobile, country, changeMobile, requestOtp} = OtpStore;
 
     return (
       <Form style={styles.formWrapper}>
         <TouchableOpacity
           style={styles.country}
-          onPress={() => navigation.push(screens.SelectCountry)}
-        >
-          <Text style={{ fontSize: 12, color: '#ccc', paddingLeft: 10 }}>
+          onPress={() => navigation.push(screens.SelectCountry)}>
+          <Text style={{fontSize: 12, color: '#ccc', paddingLeft: 10}}>
             {country ? country.name : 'Country'}
           </Text>
         </TouchableOpacity>
@@ -55,13 +54,11 @@ class RequestOtpForm extends PureComponent<RequestOtpFormProps> {
             small
             disabled={this.isDisable(mobile)}
             style={this.isDisable(mobile) ? styles.submitButtonDisabled : styles.submitButton}
-            onPress={() => requestOtp(navigation, 'send')}
-          >
+            onPress={() => requestOtp(navigation, 'send')}>
             <Text
               style={
                 this.isDisable(mobile) ? styles.submitButtonTextDisabled : styles.submitButtonText
-              }
-            >
+              }>
               SEND OTP
             </Text>
           </Button>

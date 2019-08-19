@@ -1,22 +1,21 @@
 import {observer} from 'mobx-react';
 import {Text, View} from 'native-base';
 import React, {PureComponent} from 'react';
-import OtpStore from '../../../../stores/otp';
 import styles from './styles';
-import {NavigationScreenProp} from 'react-navigation';
 
-export interface InfoProps {
-  navigation: NavigationScreenProp<any, any>;
+export interface VerifyOtpInfoProps {
+  title: string;
+  mobile: string;
 }
 
 @observer
-class Info extends PureComponent<InfoProps> {
+class VerifyOtpInfo extends PureComponent<VerifyOtpInfoProps> {
   render() {
-    const {mobile} = OtpStore;
+    const {title, mobile} = this.props;
 
     return (
       <View style={styles.infoWrapper}>
-        <Text style={styles.infoHeading}>VERIFY OTP</Text>
+        <Text style={styles.infoHeading}>{title}</Text>
         <View style={{marginHorizontal: 20}}>
           <Text style={styles.infoParagraph}>Please, Enter verification code send to</Text>
           <Text style={{textAlign: 'center', marginTop: 20, color: '#fff'}}>{mobile}</Text>
@@ -26,4 +25,4 @@ class Info extends PureComponent<InfoProps> {
   }
 }
 
-export default Info;
+export default VerifyOtpInfo;

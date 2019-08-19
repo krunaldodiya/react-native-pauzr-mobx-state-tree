@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native';
-import theme from '../../../../libs/theme';
+import {StyleSheet} from 'react-native';
+import theme from '../../../libs/theme';
 
 export default StyleSheet.create({
   infoWrapper: {
-    flex: 1,
+    flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
