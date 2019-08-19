@@ -4,19 +4,19 @@ import React, {PureComponent} from 'react';
 import {SafeAreaView} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
 import Loader from '../../../components/Loader';
-import VerifyOtpForm from '../../../components/Otp/VerifyOtpForm';
-import VerifyOtpInfo from '../../../components/Otp/VerifyOtpInfo';
+import VerifyOtpForm from '../../../components/Otp/VerifyOtp/Form';
+import Info from '../../../components/Otp/VerifyOtp/Info';
 import OtpStore from '../../../stores/otp';
 
-interface VerifyOtpPageProps {
+interface VerifyOtpProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
 @observer
-class VerifyOtpPage extends PureComponent<VerifyOtpPageProps> {
+class VerifyOtp extends PureComponent<VerifyOtpProps> {
   render() {
     const {navigation} = this.props;
-    const {loading, mobile} = OtpStore;
+    const {loading} = OtpStore;
 
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -26,11 +26,11 @@ class VerifyOtpPage extends PureComponent<VerifyOtpPageProps> {
           style={{backgroundColor: '#0D62A2'}}
         />
         <Loader loading={loading} />
-        <VerifyOtpInfo title="REQUEST OTP" mobile={mobile} />
+        <Info />
         <VerifyOtpForm navigation={navigation} />
       </SafeAreaView>
     );
   }
 }
 
-export default VerifyOtpPage;
+export default VerifyOtp;

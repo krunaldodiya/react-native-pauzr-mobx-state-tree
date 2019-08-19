@@ -6,12 +6,12 @@ import {NavigationScreenProp} from 'react-navigation';
 import LocationStore from '../../../stores/location';
 import OtpStore from '../../../stores/otp';
 
-interface SelectCountryPageProps {
+interface SelectCountryProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
 @observer
-class SelectCountryPage extends PureComponent<SelectCountryPageProps> {
+class SelectCountry extends PureComponent<SelectCountryProps> {
   state = {
     keywords: '',
   };
@@ -128,4 +128,4 @@ class SelectCountryPage extends PureComponent<SelectCountryPageProps> {
   }
 }
 
-export default SelectCountryPage;
+export default SelectCountry;
