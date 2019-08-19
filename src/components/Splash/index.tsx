@@ -4,19 +4,21 @@ import {ActivityIndicator, SafeAreaView} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
 
 export interface SplashScreenProps {
-  navigation: NavigationScreenProp<any, any>;
+  color: string;
 }
 
 @observer
 class SplashScreen extends PureComponent<SplashScreenProps> {
   render() {
+    const {color} = this.props;
+
     return (
       <SafeAreaView
         style={{
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: '#0D62A2',
+          backgroundColor: color,
         }}>
         <ActivityIndicator color="white" size="large" />
       </SafeAreaView>

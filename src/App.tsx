@@ -47,13 +47,11 @@ class App extends PureComponent<AppProps> {
 
   render(): ReactFragment {
     if (AuthStore.loading || ThemeStore.loading || ThemeStore.getScreen == null) {
-      return <SplashScreen />;
+      return <SplashScreen color="#0D62A2" />;
     }
 
     const initialScreen = getInitialScreen(AuthStore.authUser);
-
     const AppNavigator = getAppNavigator(initialScreen);
-
     const AppContainer = createAppContainer(AppNavigator);
 
     return <AppContainer />;
