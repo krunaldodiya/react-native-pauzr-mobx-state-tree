@@ -7,6 +7,5 @@ module.exports = {
         legacy: true,
       },
     ],
-    ['transform-class-bound-properties', {production: false}],
   ],
 };

@@ -27,17 +27,19 @@ class IntroPage extends PureComponent<IntroPageProps> {
     navigation.replace(screens.RequestOtp);
   };
 
-  renderItem = (data: any) => {
+  renderItem(data: any) {
     const {item} = data;
 
     return (
       <View style={styles.mainContent(item.backgroundColor)}>
+        <Text style={styles.title}>test</Text>
+
         <Text style={styles.title}>{item.title}</Text>
         <Image style={styles.image} source={{uri: getAssets(item.image)}} />
         <Text style={styles.text}>{item.text}</Text>
       </View>
     );
-  };
+  }
 
   getTags(tags: any[]) {
     return tags.map((tag: any) => {
@@ -70,7 +72,7 @@ class IntroPage extends PureComponent<IntroPageProps> {
           showDoneButton
           showNextButton
           showPrevButton
-          activeDotStyle={{backgroundColor: 'skyblue'}}
+          activeDotStyle={{backgroundColor: 'lightblue'}}
           dotStyle={{backgroundColor: 'white'}}
         />
       </SafeAreaView>
