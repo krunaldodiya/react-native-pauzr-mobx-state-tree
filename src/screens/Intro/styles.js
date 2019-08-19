@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import theme from '../../libs/theme';
 
 export default StyleSheet.create({
-  mainContent: backgroundColor => {
+  mainContent(backgroundColor) {
     return {
       flex: 1,
       flexDirection: 'column',

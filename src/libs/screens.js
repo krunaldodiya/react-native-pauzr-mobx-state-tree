@@ -1,8 +1,8 @@
 const screens = {
-  SelectCountry: 'SelectCountry',
-  RequestOtp: 'RequestOtp',
-  VerifyOtp: 'VerifyOtp',
-  Home: 'Home',
+  SelectCountry: 'SelectCountryPage',
+  RequestOtp: 'RequestOtpPage',
+  VerifyOtp: 'VerifyOtpPage',
+  Home: 'HomePage',
 };
 
 export default screens;

@@ -12,15 +12,15 @@ export interface IntroPageProps {
 }
 
 class IntroPage extends PureComponent<IntroPageProps, object, any> {
-  onDone() {
+  onDone = () => {
     const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
-  }
+  };
 
-  onSkip() {
+  onSkip = () => {
     const {navigation} = this.props;
     navigation.replace(screens.RequestOtp);
-  }
+  };
 
   renderItem = (data: any) => {
     const {item} = data;
@@ -38,7 +38,7 @@ class IntroPage extends PureComponent<IntroPageProps, object, any> {
     );
   };
 
-  getTags = (tags: any[]) => {
+  getTags(tags: any[]) {
     return tags.map((tag: any) => {
       return {
         key: tag.key.value,
@@ -48,7 +48,7 @@ class IntroPage extends PureComponent<IntroPageProps, object, any> {
         backgroundColor: tag.backgroundColor.value,
       };
     });
-  };
+  }
 
   render(): ReactFragment {
     const getScreens = ThemeStore.getScreen;
@@ -61,7 +61,7 @@ class IntroPage extends PureComponent<IntroPageProps, object, any> {
           getScreens.intro_slider_3.tags,
           getScreens.intro_slider_4.tags,
         ])}
-        renderItem={data => this.renderItem(data)}
+        renderItem={this.renderItem}
         onDone={() => this.onDone()}
         onSkip={() => this.onSkip()}
         showSkipButton

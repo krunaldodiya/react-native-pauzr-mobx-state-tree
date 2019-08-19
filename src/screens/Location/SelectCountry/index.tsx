@@ -37,7 +37,7 @@ class SelectCountryPage extends PureComponent<SelectCountryPageProps> {
     return countryList;
   }
 
-  showLoader = () => {
+  showLoader() {
     return (
       <View
         style={{
@@ -50,7 +50,7 @@ class SelectCountryPage extends PureComponent<SelectCountryPageProps> {
         <Text>loading...</Text>
       </View>
     );
-  };
+  }
 
   renderSeparator = () => {
     return <View style={{height: 1, backgroundColor: '#ccc'}} />;
