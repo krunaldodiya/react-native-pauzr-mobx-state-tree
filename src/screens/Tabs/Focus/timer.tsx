@@ -2,7 +2,6 @@ import {observer} from 'mobx-react';
 import React, {PureComponent} from 'react';
 import {Dimensions, ImageBackground, View} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
-import FocusAppBar from '../../../components/AppBar/Focus';
 import TimerCard from './card';
 
 export interface TimerPageProps {
@@ -27,12 +26,9 @@ class TimerPage extends PureComponent<TimerPageProps> {
 
   render() {
     const {size} = this.state;
-    const {navigation} = this.props;
 
     return (
       <View style={{flex: 1, backgroundColor: 'skyblue'}}>
-        <FocusAppBar name="PauzR" navigation={navigation} />
-
         <View
           style={{
             flex: 1,

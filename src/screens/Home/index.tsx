@@ -1,8 +1,12 @@
+import {observer} from 'mobx-react';
 import React, {PureComponent} from 'react';
+import SideMenu from 'react-native-side-menu';
 import Swiper from 'react-native-swiper';
 import {NavigationScreenProp} from 'react-navigation';
-import FocusTabs from '../Tabs/Focus';
-import FunTabs from '../Tabs/Fun';
+import DrawerMenu from '../../components/DrawerMenu';
+import AuthStore from '../../stores/auth';
+import FocusMainPage from '../Tabs/focus';
+import FunMainPage from '../Tabs/fun';
 
 export interface HomePageProps {
   navigation: NavigationScreenProp<any, any>;
@@ -10,6 +14,9 @@ export interface HomePageProps {
 
 class HomePage extends PureComponent<HomePageProps> {
   render() {
+    const {isDrawerOpened, onChangeDrawer} = AuthStore;
+    const menu = <DrawerMenu navigation={this.props.navigation} />;
+
     return (
       <Swiper
         showsHorizontalScrollIndicator={false}
@@ -17,11 +24,13 @@ class HomePage extends PureComponent<HomePageProps> {
         showsButtons={false}
         showsPagination={false}
         loop={false}>
-        <FocusTabs />
-        <FunTabs />
+        <SideMenu menu={menu} onChange={onChangeDrawer} isOpen={isDrawerOpened}>
+          <FocusMainPage navigation={this.props.navigation} />
+        </SideMenu>
+        <FunMainPage navigation={this.props.navigation} />
       </Swiper>
     );
   }
 }
 
-export default HomePage;
+export default observer(HomePage);

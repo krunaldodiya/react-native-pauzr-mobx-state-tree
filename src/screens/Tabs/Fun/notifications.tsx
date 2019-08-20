@@ -3,7 +3,6 @@ import {Text, View} from 'native-base';
 import React, {PureComponent} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
-import FunAppBar from '../../../components/AppBar/Fun';
 import PostLiked from '../../../components/Notifications/PostLiked';
 import UserFollowed from '../../../components/Notifications/UserFollowed';
 import NotificationStore from '../../../stores/notifications';
@@ -54,8 +53,6 @@ class NotificationsPage extends PureComponent<NotificationsPageProps> {
 
     return (
       <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <FunAppBar name="Notifications" navigation={navigation} />
-
         <FlatList
           keyboardShouldPersistTaps="handled"
           data={NotificationStore.allNotifications}

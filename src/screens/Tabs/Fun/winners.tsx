@@ -3,7 +3,6 @@ import {Body, Left, List, ListItem, Right, Text, Thumbnail, View} from 'native-b
 import React, {PureComponent} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
-import FunAppBar from '../../../components/AppBar/Fun';
 import getAssets from '../../../libs/image';
 import theme from '../../../libs/theme';
 import LotteryStore from '../../../stores/lottery';
@@ -97,8 +96,6 @@ class WinnersPage extends PureComponent<WinnersPageProps> {
 
     return (
       <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <FunAppBar name="Winners" navigation={navigation} />
-
         <FlatList
           keyboardShouldPersistTaps="handled"
           data={LotteryStore.allWinners}

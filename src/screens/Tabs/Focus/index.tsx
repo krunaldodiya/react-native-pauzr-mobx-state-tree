@@ -1,7 +1,7 @@
-import { Icon, Text, View } from 'native-base';
+import {Icon, Text, View} from 'native-base';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import {
   createAppContainer,
   createBottomTabNavigator,
@@ -18,8 +18,8 @@ const FocusTabs = createBottomTabNavigator(
       navigationOptions: {
         title: 'Screen 3',
         tabBarLabel: 'Group',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon type="MaterialIcons" name="group" style={{ fontSize: 25, color: tintColor }} />
+        tabBarIcon: ({tintColor}) => (
+          <Icon type="MaterialIcons" name="group" style={{fontSize: 25, color: tintColor}} />
         ),
       },
     },
@@ -28,11 +28,11 @@ const FocusTabs = createBottomTabNavigator(
       navigationOptions: {
         title: 'Screen 3',
         tabBarLabel: 'Home',
-        tabBarIcon: ({ tintColor }) => (
+        tabBarIcon: ({tintColor}) => (
           <Icon
             type="MaterialIcons"
             name="pause-circle-outline"
-            style={{ fontSize: 35, color: tintColor }}
+            style={{fontSize: 35, color: tintColor}}
           />
         ),
       },
@@ -41,8 +41,8 @@ const FocusTabs = createBottomTabNavigator(
       screen: ScoreboardPage,
       navigationOptions: {
         tabBarLabel: 'Home',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon type="Ionicons" name="ios-stats" style={{ fontSize: 25, color: tintColor }} />
+        tabBarIcon: ({tintColor}) => (
+          <Icon type="Ionicons" name="ios-stats" style={{fontSize: 25, color: tintColor}} />
         ),
       },
     },
@@ -63,8 +63,8 @@ const FocusTabs = createBottomTabNavigator(
 
 const CustomDrawerContentComponent = () => (
   <ScrollView>
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 1 }}>
+    <SafeAreaView style={{flex: 1}}>
+      <View style={{flex: 1}}>
         <Text>hello</Text>
       </View>
     </SafeAreaView>

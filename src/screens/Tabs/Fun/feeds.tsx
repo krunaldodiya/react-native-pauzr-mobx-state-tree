@@ -4,7 +4,6 @@ import React, {PureComponent} from 'react';
 import {ActivityIndicator, Dimensions, FlatList, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {NavigationScreenProp} from 'react-navigation';
-import FunAppBar from '../../../components/AppBar/Fun';
 import getAssets from '../../../libs/image';
 import theme from '../../../libs/theme';
 import FeedStore from '../../../stores/feed';
@@ -99,8 +98,6 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
 
     return (
       <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <FunAppBar name="Timeline" navigation={navigation} />
-
         <FlatList
           keyboardShouldPersistTaps="handled"
           data={FeedStore.allFeeds}

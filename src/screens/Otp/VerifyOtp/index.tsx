@@ -18,7 +18,7 @@ class VerifyOtpPage extends PureComponent<VerifyOtpPageProps> {
     const {loading} = OtpStore;
 
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, justifyContent: 'space-between'}}>
         <Content
           contentContainerStyle={{
             flexGrow: 1,

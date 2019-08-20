@@ -1,9 +1,17 @@
-import { observer } from 'mobx-react';
-import { Button, Icon } from 'native-base';
-import React, { PureComponent } from 'react';
-import { ActivityIndicator, Dimensions, FlatList, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { NavigationScreenProp } from 'react-navigation';
-import FunAppBar from '../../../components/AppBar/Fun';
+import {observer} from 'mobx-react';
+import {Button, Icon} from 'native-base';
+import React, {PureComponent} from 'react';
+import {
+  ActivityIndicator,
+  Dimensions,
+  FlatList,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {NavigationScreenProp} from 'react-navigation';
 import getAssets from '../../../libs/image';
 import theme from '../../../libs/theme';
 import AuthStore from '../../../stores/auth';
@@ -12,7 +20,6 @@ import FeedStore from '../../../stores/feed';
 export interface PrivateProfilePageProps {
   navigation: NavigationScreenProp<any, any>;
 }
-
 
 class PrivateProfilePage extends PureComponent<PrivateProfilePageProps> {
   state = {
@@ -78,8 +85,6 @@ class PrivateProfilePage extends PureComponent<PrivateProfilePageProps> {
 
     return (
       <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <FunAppBar name="Profile" navigation={navigation} />
-
         <ScrollView>
           <View style={{flexDirection: 'row', padding: 10}}>
             <View style={{flex: 1, flexDirection: 'row'}}>
