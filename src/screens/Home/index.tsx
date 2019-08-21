@@ -1,6 +1,7 @@
 import {observer} from 'mobx-react';
 import React, {PureComponent} from 'react';
-import SideMenu from 'react-native-side-menu';
+const SideMenu: any = require('react-native-side-menu');
+
 import Swiper from 'react-native-swiper';
 import {NavigationScreenProp} from 'react-navigation';
 import DrawerMenu from '../../components/DrawerMenu';

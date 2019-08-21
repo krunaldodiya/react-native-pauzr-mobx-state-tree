@@ -5,14 +5,23 @@ import {NavigationScreenProp} from 'react-navigation';
 import FunAppBar from '../../../components/AppBar/Fun';
 import AuthStore from '../../../stores/auth';
 
+import {DeviceEventEmitter, NativeModules} from 'react-native';
+const {MobileDeviceManager} = NativeModules;
+
 export interface StopPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
 class StopPage extends PureComponent<StopPageProps> {
   backHandler: any;
+  deviceHandler: any;
 
   componentDidMount() {
+    this.deviceHandler = DeviceEventEmitter.addListener(
+      MobileDeviceManager.APP_LOCK_STATUS_CHANGED,
+      this.getDeviceStatus
+    );
+
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', async () => {
       await this.goBack();
     });
@@ -20,6 +29,11 @@ class StopPage extends PureComponent<StopPageProps> {
 
   componentWillUnmount() {
     this.backHandler.remove();
+    this.deviceHandler.remove();
+  }
+
+  getDeviceStatus(event: any) {
+    console.log(event);
   }
 
   async goBack() {
