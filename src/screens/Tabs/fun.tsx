@@ -38,14 +38,17 @@ class FunMainPage extends PureComponent<FunMainPageProps> {
 
         <BottomMenu
           navigation={navigation}
+          backgroundColor="#fff"
+          color="grey"
+          activeColor="#0D62A2"
           activeTab={tab}
           onChangeTab={this.changeTab}
           tabs={[
-            {id: 1, name: 'home', iconName: 'camera', iconType: 'EvilIcons'},
-            {id: 2, name: 'home', iconName: 'trophy', iconType: 'EvilIcons'},
-            {id: 3, name: 'home', iconName: 'user', iconType: 'EvilIcons'},
-            {id: 4, name: 'home', iconName: 'search', iconType: 'EvilIcons'},
-            {id: 5, name: 'home', iconName: 'heart', iconType: 'EvilIcons'},
+            {id: 1, name: 'home', iconName: 'camera', iconType: 'EvilIcons', iconSize: 30},
+            {id: 2, name: 'home', iconName: 'trophy', iconType: 'EvilIcons', iconSize: 30},
+            {id: 3, name: 'home', iconName: 'user', iconType: 'EvilIcons', iconSize: 30},
+            {id: 4, name: 'home', iconName: 'search', iconType: 'EvilIcons', iconSize: 30},
+            {id: 5, name: 'home', iconName: 'heart', iconType: 'EvilIcons', iconSize: 30},
           ]}
         />
       </Fragment>

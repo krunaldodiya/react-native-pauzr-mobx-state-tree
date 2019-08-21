@@ -34,12 +34,15 @@ class FocusMainPage extends PureComponent<FocusMainPageProps> {
 
         <BottomMenu
           navigation={navigation}
+          backgroundColor="#fff"
+          color="grey"
+          activeColor="#0D62A2"
           activeTab={tab}
           onChangeTab={this.changeTab}
           tabs={[
-            {id: 1, name: 'home', iconName: 'ios-people', iconType: 'Ionicons'},
-            {id: 2, name: 'home', iconName: 'ios-pause', iconType: 'Ionicons'},
-            {id: 3, name: 'home', iconName: 'ios-stats', iconType: 'Ionicons'},
+            {id: 1, name: 'home', iconName: 'ios-people', iconType: 'Ionicons', iconSize: 26},
+            {id: 2, name: 'home', iconName: 'ios-pause', iconType: 'Ionicons', iconSize: 26},
+            {id: 3, name: 'home', iconName: 'ios-stats', iconType: 'Ionicons', iconSize: 26},
           ]}
         />
       </Fragment>
