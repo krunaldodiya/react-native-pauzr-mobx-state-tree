@@ -1,5 +1,5 @@
-.eslintrc.json
-.prettierrc
+.eslintrc.js
+.prettierrc.js
 babel.config.js
 package.json
 tsconfig.json
