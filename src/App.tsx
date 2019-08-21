@@ -9,6 +9,7 @@ import IntroPage from './screens/Intro';
 import SelectCountryPage from './screens/Location/SelectCountry';
 import RequestOtpPage from './screens/Otp/RequestOtp';
 import VerifyOtpPage from './screens/Otp/VerifyOtp';
+import StopPage from './screens/Tabs/Focus/stop';
 import AuthStore from './stores/auth';
 import ThemeStore from './stores/theme';
 
@@ -20,6 +21,7 @@ const getAppNavigator = (initialRouteName: string) => {
       RequestOtpPage: {screen: RequestOtpPage},
       VerifyOtpPage: {screen: VerifyOtpPage},
       SelectCountryPage: {screen: SelectCountryPage},
+      StopPage: {screen: StopPage},
     },
     {
       initialRouteName,

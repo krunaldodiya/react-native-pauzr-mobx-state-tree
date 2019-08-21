@@ -1,12 +1,8 @@
 import {observer} from 'mobx-react';
 import React, {PureComponent} from 'react';
-import {BackHandler, Text, View} from 'react-native';
+import {BackHandler, DeviceEventEmitter, NativeModules, Text, View} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
-import FunAppBar from '../../../components/AppBar/Fun';
-import AuthStore from '../../../stores/auth';
-
-import {DeviceEventEmitter, NativeModules} from 'react-native';
-const {MobileDeviceManager} = NativeModules;
+const MobileDeviceManager = NativeModules;
 
 export interface StopPageProps {
   navigation: NavigationScreenProp<any, any>;
@@ -17,9 +13,13 @@ class StopPage extends PureComponent<StopPageProps> {
   deviceHandler: any;
 
   componentDidMount() {
-    this.deviceHandler = DeviceEventEmitter.addListener(
-      MobileDeviceManager.APP_LOCK_STATUS_CHANGED,
-      this.getDeviceStatus
+    console.log(DeviceEventEmitter);
+
+    DeviceEventEmitter.addListener(
+      MobileDeviceManager.MobileDeviceManager.APP_LOCK_STATUS_CHANGED,
+      function(e: Event) {
+        console.log(e);
+      }
     );
 
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', async () => {
@@ -46,9 +46,7 @@ class StopPage extends PureComponent<StopPageProps> {
 
     return (
       <View style={{flex: 1, backgroundColor: '#ddd'}}>
-        <FunAppBar name="Search" navigation={navigation} />
-
-        {AuthStore.authUser && <Text style={{color: '#000'}}>{AuthStore.authUser.name}</Text>}
+        <Text style={{color: '#000'}}>hello</Text>
       </View>
     );
   }
