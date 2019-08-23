@@ -1,5 +1,5 @@
-import { flow, types } from 'mobx-state-tree'; // A
-import { api } from '../libs/api';
+import {flow, types} from 'mobx-state-tree'; // A
+import {api} from '../libs/api';
 import ValidationError from '../models/validation_error';
 import makeRequest from '../services/make_request';
 import PostStore from './post';
@@ -10,6 +10,7 @@ const FeedStore = types
     last_page: types.maybeNull(types.integer),
     total: types.maybeNull(types.integer),
     feedable_ids: types.optional(types.array(types.integer), []),
+    viewableItems: types.optional(types.array(types.integer), []),
     loading: false,
     errors: types.maybeNull(ValidationError),
   })
@@ -21,6 +22,10 @@ const FeedStore = types
     },
   }))
   .actions(self => ({
+    onViewableItemsChanged(data) {
+      self.viewableItems = data.viewableItems;
+    },
+
     getFeeds: flow(function*() {
       if (self.current_page === self.last_page) return;
 
@@ -28,8 +33,8 @@ const FeedStore = types
       const nextPage = self.current_page + 1;
 
       try {
-        const { data } = yield makeRequest(api.getFeeds, { page: nextPage });
-        const { feeds, meta } = data;
+        const {data} = yield makeRequest(api.getFeeds, {page: nextPage});
+        const {feeds, meta} = data;
         const ids = feeds.map(feed => feed.id);
 
         self.current_page = nextPage;

@@ -37,6 +37,7 @@ class BottomMenu extends PureComponent<BottomMenuProps> {
         {tabs.map(tab => {
           return (
             <TouchableWithoutFeedback
+              key={tab.id}
               onPress={() => onChangeTab(tab.id)}
               style={{
                 width: Dimensions.get('window').width / tabs.length,
