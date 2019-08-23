@@ -23,7 +23,7 @@ const FeedStore = types
   }))
   .actions(self => ({
     onViewableItemsChanged(data) {
-      self.viewableItems = data.viewableItems;
+      self.viewableItems = data.viewableItems.map(item => item.index);
     },
 
     getFeeds: flow(function*() {

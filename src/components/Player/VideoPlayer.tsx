@@ -18,10 +18,8 @@ export default class VideoPlayer extends PureComponent<VideoPlayerProps> {
     const {viewableItems, data} = this.props;
     const {index, item} = data;
 
-    const viewableItemList = viewableItems.map((item: any) => item.index);
-
     let paused = true;
-    if (viewableItemList.indexOf(index) >= 0) {
+    if (viewableItems.indexOf(index) >= 0) {
       paused = false;
     }
 
