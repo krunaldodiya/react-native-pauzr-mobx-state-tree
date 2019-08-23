@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react';
 import React, {PureComponent, ReactFragment} from 'react';
-import firebase from 'react-native-firebase';
+// import firebase from 'react-native-firebase';
 import {createAppContainer, createStackNavigator, NavigationScreenProp} from 'react-navigation';
 import SplashScreen from './components/Splash';
 import getInitialScreen from './libs/initial_screen';
@@ -40,8 +40,9 @@ export interface AppProps {
 
 class App extends PureComponent<AppProps> {
   async componentDidMount(): Promise<void> {
-    const fcmToken = await firebase.messaging().getToken();
-    AuthStore.setFcmToken(fcmToken);
+    // const fcmToken = await firebase.messaging().getToken();
+    // AuthStore.setFcmToken(fcmToken);
+    AuthStore.setFcmToken('');
     ThemeStore.getTheme();
     AuthStore.getAuthUser();
   }
@@ -52,6 +53,9 @@ class App extends PureComponent<AppProps> {
     }
 
     const initialScreen = getInitialScreen(AuthStore.authUser);
+
+    console.log(initialScreen);
+
     const AppNavigator = getAppNavigator(initialScreen);
     const AppContainer = createAppContainer(AppNavigator);
 

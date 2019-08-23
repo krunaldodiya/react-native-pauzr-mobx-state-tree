@@ -1,20 +1,21 @@
 import {observer} from 'mobx-react';
-import {Button, Card, CardItem, Icon, Left, Text, Thumbnail} from 'native-base';
+import {Text} from 'native-base';
 import React, {PureComponent} from 'react';
-import {ActivityIndicator, Dimensions, FlatList, View} from 'react-native';
-import FastImage from 'react-native-fast-image';
+import {ActivityIndicator, FlatList, View} from 'react-native';
 import {NavigationScreenProp} from 'react-navigation';
-import getAssets from '../../../libs/image';
-import theme from '../../../libs/theme';
+import Feed from '../../../components/Feed/card';
 import FeedStore from '../../../stores/feed';
+import VideoPlayer from '../../../components/Player/VideoPlayer';
 
 export interface FeedsPageProps {
   navigation: NavigationScreenProp<any, any>;
 }
 
-const deviceWidth = Dimensions.get('window').width;
-
 class FeedsPage extends PureComponent<FeedsPageProps> {
+  state = {
+    viewableItems: [],
+  };
+
   componentDidMount() {
     this.getFeeds();
   }
@@ -24,55 +25,30 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
   }
 
   renderItem(data: any) {
-    const {item} = data;
+    const {index} = data;
+    const {viewableItems} = this.state;
+
+    const videoData = {
+      index: 1,
+      item: {
+        title: '',
+        owner: {
+          name: 'Milestone Educom',
+          avatar:
+            'https://scontent.famd4-1.fna.fbcdn.net/v/t1.0-1/p200x200/64662137_2271763296277748_9118558612740898816_n.png?_nc_cat=107&_nc_oc=AQkxYxvjH32kdtKB-CaF5QOOdtVb4fzyQOz2-oW9HWOZIRmTim5vFqg5Eg91JNuvdZ4&_nc_ht=scontent.famd4-1.fna&oh=423e36b8b57ba89ef7f9958e9edbb4a6&oe=5E146EC7',
+        },
+        description: null,
+        url: 'https://wappspecial.com/uploadfile/10th_Guj/Basic/common.mp4',
+        when: 'sponsored',
+      },
+    };
 
     return (
-      <Card style={{flex: 1}}>
-        <View style={{flexDirection: 'row', padding: 10}}>
-          <View>
-            <Thumbnail
-              source={{uri: getAssets(item.owner.avatar)}}
-              style={{height: 40, width: 40}}
-            />
-          </View>
+      <React.Fragment>
+        <Feed data={data} />
 
-          <View style={{marginLeft: 10, flexDirection: 'column'}}>
-            <Text style={{fontSize: 16, fontFamily: theme.fonts.TitilliumWebSemiBold}}>
-              {item.owner.name}
-            </Text>
-            <Text style={{fontSize: 12, fontFamily: theme.fonts.TitilliumWebRegular}} note>
-              {item.when}
-            </Text>
-          </View>
-        </View>
-
-        <View style={{flex: 1}}>
-          {item.description && (
-            <View style={{padding: 10}}>
-              <Text style={{fontSize: 14, fontFamily: theme.fonts.TitilliumWebSemiBold}}>
-                {item.description}
-              </Text>
-            </View>
-          )}
-
-          <View style={{flex: 1}}>
-            <FastImage
-              style={{width: deviceWidth, height: deviceWidth}}
-              source={{uri: getAssets(item.url)}}
-              resizeMode={FastImage.resizeMode.contain}
-            />
-          </View>
-        </View>
-
-        <CardItem>
-          <Left>
-            <Button transparent textStyle={{color: '#87838B'}}>
-              <Icon type="Entypo" name="heart" style={{color: 'red', fontSize: 22}} />
-              <Text>103 likes</Text>
-            </Button>
-          </Left>
-        </CardItem>
-      </Card>
+        {index == 1 && <VideoPlayer viewableItems={viewableItems} data={videoData} />}
+      </React.Fragment>
     );
   }
 
@@ -93,6 +69,12 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
     );
   }
 
+  onViewableItemsChanged = (data: any) => {
+    this.setState({
+      viewableItems: data.viewableItems,
+    });
+  };
+
   render() {
     const {navigation} = this.props;
 
@@ -106,6 +88,12 @@ class FeedsPage extends PureComponent<FeedsPageProps> {
           onEndReached={this.getFeeds}
           onEndReachedThreshold={0.5}
           ListFooterComponent={this.showLoading}
+          viewabilityConfig={{
+            minimumViewTime: 10,
+            itemVisiblePercentThreshold: 10,
+            // viewAreaCoveragePercentThreshold: 10,
+          }}
+          onViewableItemsChanged={this.onViewableItemsChanged}
         />
       </View>
     );

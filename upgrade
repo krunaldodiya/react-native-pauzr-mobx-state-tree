@@ -1,11 +1,31 @@
+packages
+----------
+react-navigation
+react-native-gesture-handler
+react-native-reanimated
+axios
+native-base
+react-native-app-intro-slider
+react-native-device-info
+react-native-fast-image
+mobx
+mobx-react
+mobx-state-tree
+react-native-loading-spinner-overlay
+react-native-side-menu
+react-native-swiper
+react-native-segmented-control-tab
+react-native-awesome-alerts
+react-native-firebase
+
 .eslintrc.js
 .prettierrc.js
 babel.config.js
-package.json
 tsconfig.json
-app.json
 jest.config
 metro.config
+app.json
+package.json
 
 rm -rf /usr/local/var/run/watchman && brew uninstall watchman && brew install watchman
 watchman watch-del-all
